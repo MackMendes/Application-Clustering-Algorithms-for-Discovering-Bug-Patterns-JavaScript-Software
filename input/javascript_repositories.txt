@@ -1,0 +1,9 @@
+https://github.com/vf1/muvconf.git
+https://github.com/caofb/nodewebkitqq.git
+https://github.com/YutaMiyake/Astar.git
+https://github.com/zefei/remonit.git
+https://github.com/senpaiski/TopAnimeStream.git
+https://github.com/PCI-TDF/artomico-debian.git
+https://github.com/rafaelkyrdan/Weather-Map.git
+https://github.com/Antrikshy/MinecraftSnaps.git
+https://github.com/jawerty/Hyro.git
