@@ -31,7 +31,7 @@
   <class id="4" language="java" name="ca.ubc.ece.salt.pangor.original.js.analysis.ScriptAnalysis" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/analysis/ScriptAnalysis.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="88" y="118"/>    
+    <position height="-1" width="-1" x="-1762" y="-736"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -41,7 +41,7 @@
   <class id="5" language="java" name="ca.ubc.ece.salt.pangor.original.js.analysis.FunctionAnalysis" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/analysis/FunctionAnalysis.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="89" y="-102"/>    
+    <position height="-1" width="-1" x="-1761" y="-976"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -68,17 +68,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.SourceCodeFileAnalysis" project="bugaid" 
-    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/analysis/SourceCodeFileAnalysis.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-558" y="144"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="9" language="java" name="ca.ubc.ece.salt.pangor.original.js.analysis.scope.Scope" project="bugaid" 
+  <interface id="8" language="java" name="ca.ubc.ece.salt.pangor.original.js.analysis.scope.Scope" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/analysis/scope/Scope.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="579" y="-264"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -87,213 +77,436 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="10" language="java" name="ca.ubc.ece.salt.pangor.js.learn.LearningAnalysisMain" project="bugaid" 
+  <class id="9" language="java" name="ca.ubc.ece.salt.pangor.js.learn.LearningAnalysisMain" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/js/learn/LearningAnalysisMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="532" y="-575"/>    
+    <position height="-1" width="-1" x="-753" y="-1351"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.ChangeComplexityDomainAnalysis" 
+  <class id="10" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.ChangeComplexityDomainAnalysis" 
     project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/analysis/ChangeComplexityDomainAnalysis.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-610" y="-574"/>    
+    <position height="-1" width="-1" x="-397" y="-389"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.ChangeComplexitySCFA" 
+  <class id="11" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.ChangeComplexitySCFA" 
     project="bugaid" file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/analysis/ChangeComplexitySCFA.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-796" y="-68"/>    
+    <position height="-1" width="-1" x="-798" y="-14"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" 
+  <class id="12" language="java" 
     name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.ChangeComplexityVisitor.ChangeComplexity" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/analysis/ChangeComplexityVisitor.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-927" y="-295"/>    
+    <position height="-1" width="-1" x="-1500" y="-14"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.DomainAnalysis" project="bugaid" 
+  <class id="13" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.DomainAnalysis" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/analysis/DomainAnalysis.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-193" y="-327"/>    
+    <position height="-1" width="-1" x="-318" y="-739"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="15" language="java" name="ca.ubc.ece.salt.pangor.original.cfg.CFGFactory" project="bugaid" 
+  <interface id="14" language="java" name="ca.ubc.ece.salt.pangor.original.cfg.CFGFactory" project="bugaid" 
     file="/bugaid/src/ca/ubc/ece/salt/pangor/original/cfg/CFGFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="275" y="-321"/>    
+    <position height="-1" width="-1" x="251" y="-585"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <association id="16">    
-    <bendpoint x="-254" y="-130"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="17" name="srcAnalysis"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="20">    
+  <class id="15" language="java" name="ca.ubc.ece.salt.pangor.original.batch.GitProjectAnalysis" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/batch/GitProjectAnalysis.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="308" y="-1110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.CommitAnalysis" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/analysis/CommitAnalysis.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-212" y="-980"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="ca.ubc.ece.salt.pangor.original.git.GitProject" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/git/GitProject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="777" y="-1035"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ca.ubc.ece.salt.pangor.original.batch.GitProjectAnalysisTask" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/batch/GitProjectAnalysisTask.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-122" y="-1265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.DataSet" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/analysis/DataSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="278" y="-810"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.LearningDomainAnalysis" 
+    project="bugaid" file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/analysis/LearningDomainAnalysis.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-997" y="-1161"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.analysis.LearningFunctionAnalysis" 
+    project="bugaid" file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/analysis/LearningFunctionAnalysis.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1103" y="-981"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="ca.ubc.ece.salt.pangor.original.analysis.SourceCodeFileAnalysis" project="bugaid" 
+    file="/bugaid/src/ca/ubc/ece/salt/pangor/original/analysis/SourceCodeFileAnalysis.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1064" y="-710"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="ca.ubc.ece.salt.pangor.original.js.learn.ctet.CTETFunctionAnalysis" 
+    project="bugaid" file="/bugaid/src/ca/ubc/ece/salt/pangor/original/js/learn/ctet/CTETFunctionAnalysis.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-2560" y="-778"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="24">    
     <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="11"/>  
+    <end type="TARGET" refId="12"/>  
   </dependency>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="22">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="23" name="scope"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="25">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <realization id="26">    
-    <bendpoint x="583" y="-25"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="27">    
-    <bendpoint x="-562" y="-383"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="28" name="dstComplexity"/>      
-      <multiplicity id="29" minimum="0" maximum="1">        
-        <position height="16" width="23" x="-794" y="-189"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <bendpoint x="-735" y="-399"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="31" name="srcComplexity">        
-        <position height="18" width="76" x="-749" y="-291"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="1">        
-        <position height="16" width="23" x="-751" y="-259"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="33">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="34">    
-    <bendpoint x="-372" y="-179"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="35" name="dstAnalysis">        
-        <position height="18" width="67" x="-583" y="36"/>      
-      </attribute>      
-      <multiplicity id="36" minimum="0" maximum="1">        
-        <position height="16" width="23" x="-502" y="46"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="38">    
+  <association id="25">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="39" name="functionAnalyses"/>      
-      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+      <attribute id="26" name="functionAnalyses">        
+        <position height="0" width="0" x="-1850" y="-874"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-1850" y="-874"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="41">    
+  <generalization id="28">    
     <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="14"/>  
+    <end type="TARGET" refId="22"/>  
   </generalization>  
+  <association id="29">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="30" name="srcAnalysis">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="32">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <association id="33">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="34" name="cfgFactory">        
+        <position height="0" width="0" x="-24" y="-264"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-24" y="-264"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="39">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="40">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
   <association id="42">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="43" name="parent"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="43" name="scope">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="45">    
-    <bendpoint x="462" y="128"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <association id="46">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="47" name="complexity"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
   <dependency id="49">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="16"/>  
   </dependency>  
-  <dependency id="50">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="9"/>  
+  <realization id="50">    
+    <bendpoint x="583" y="-25"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <dependency id="51">    
+    <bendpoint x="-214" y="-1132"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="15"/>  
   </dependency>  
-  <association id="51">    
-    <bendpoint x="728" y="-35"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="52" name="children"/>      
-      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="54">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="55" name="cfgFactory"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
+  <generalization id="52">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="53">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="54" name="gitProjectAnalysis">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="55" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="57">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="13"/>  
+  <dependency id="56">    
+    <bendpoint x="462" y="128"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="58">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="14"/>  
+  <dependency id="57">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="58">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="59" name="complexity">        
+        <position height="0" width="0" x="-573" y="281"/>      
+      </attribute>      
+      <multiplicity id="60" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-573" y="281"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="62" name="domainAnalyses">        
+        <position height="18" width="88" x="-375" y="-883"/>      
+      </attribute>      
+      <multiplicity id="63" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="-281" y="-881"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="65" name="commitAnalysis">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="68">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="69" name="srcComplexity">        
+        <position height="18" width="76" x="-960" y="-257"/>      
+      </attribute>      
+      <multiplicity id="70" minimum="0" maximum="1">        
+        <position height="16" width="23" x="-962" y="-225"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="72" name="dstAnalysis">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="77">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="78">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="79">    
+    <bendpoint x="-854" y="-364"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="80" name="dstComplexity">        
+        <position height="0" width="0" x="-2" y="54"/>      
+      </attribute>      
+      <multiplicity id="81" minimum="0" maximum="1">        
+        <position height="16" width="23" x="-796" y="-135"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="83" name="dataSet">        
+        <position height="18" width="45" x="32" y="-900"/>      
+      </attribute>      
+      <multiplicity id="84" minimum="0" maximum="1">        
+        <position height="16" width="23" x="54" y="-876"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <bendpoint x="728" y="-35"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="86" name="children">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="87" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="89" name="parent">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="91">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="92">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="93">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

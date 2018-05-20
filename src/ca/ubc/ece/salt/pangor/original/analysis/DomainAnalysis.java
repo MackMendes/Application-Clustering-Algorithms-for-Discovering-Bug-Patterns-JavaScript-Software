@@ -43,6 +43,13 @@ public class DomainAnalysis {
     protected void postAnalysis(Commit commit, Map<IPredicate, IRelation> facts) throws Exception {
     }
 
+    /**
+     * Método para analisar os arquivos obtidos da extração do GitHub
+     * @param sourceCodeFileChange Objeto contendo os dados do commit, com o  
+     * 		  arquivo antes (arquivo com erro - buggyFile) e o arquivo depois (arquivo corrigido - repairedFile)
+     * @param facts
+     * @throws Exception
+     */
     protected void analyzeFile(SourceCodeFileChange sourceCodeFileChange, Map<IPredicate, IRelation> facts) throws Exception {
         String fileExtension = DomainAnalysis.getSourceCodeFileExtension(sourceCodeFileChange.buggyFile, sourceCodeFileChange.repairedFile);
         if (fileExtension != null && this.cfgFactory.acceptsExtension(fileExtension)) {
@@ -75,17 +82,10 @@ public class DomainAnalysis {
             catch (Exception e) {
                 throw e;
             }
+            
             CFDContext cfdContext = cfd.getContext();
-            if (this.srcAnalysis != null) {
-                this.srcAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.srcScript, cfdContext.srcCFGs);
-            } else {
-                this.srcAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.srcScript, cfdContext.srcCFGs);
-            }
-            if (this.dstAnalysis != null) {
-                this.dstAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.dstScript, cfdContext.dstCFGs);
-            } else {
-                this.dstAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.dstScript, cfdContext.dstCFGs);
-            }
+            this.srcAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.srcScript, cfdContext.srcCFGs);
+            this.dstAnalysis.analyze(sourceCodeFileChange, facts, cfdContext.dstScript, cfdContext.dstCFGs);
         }
     }
 
