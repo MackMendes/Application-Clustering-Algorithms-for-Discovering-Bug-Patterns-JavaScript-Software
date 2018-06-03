@@ -7,6 +7,7 @@ import ca.ubc.ece.salt.pangor.original.git.GitProject;
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.lang3.tuple.Triple;
+import org.apache.commons.lang3.tuple.Pair;
 import org.eclipse.jgit.api.DiffCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
@@ -40,13 +41,13 @@ public class GitProjectAnalysis
     long startTime = System.currentTimeMillis();
     this.logger.info("[START ANALYSIS] {}", new Object[] { getURI() });
     
-    List<Triple<String, String, Commit.Type>> commits = getCommitPairs();
+    List<Triple<String, String, Pair<Commit.Type, String>>> commits = getCommitPairs();
     
     this.logger.info(" [ANALYZING] {} bug fixing commits", new Object[] { Integer.valueOf(commits.size()) });
-    for (Triple<String, String, Commit.Type> commit : commits) {
+    for (Triple<String, String, Pair<Commit.Type, String>> commit : commits) {
       try
       {
-        analyzeDiff((String)commit.getLeft(), (String)commit.getMiddle(), (Commit.Type)commit.getRight());
+        analyzeDiff((String)commit.getLeft(), (String)commit.getMiddle(), (Pair<Commit.Type, String>)commit.getRight());
       }
       catch (Exception e)
       {
@@ -57,7 +58,7 @@ public class GitProjectAnalysis
     this.logger.info("[END ANALYSIS] {}. Time (in seconds): {} ", new Object[] { getURI(), Double.valueOf((endTime - startTime) / 1000.0D) });
   }
   
-  private void analyzeDiff(String buggyRevision, String bugFixingRevision, Commit.Type commitMessageType)
+  private void analyzeDiff(String buggyRevision, String bugFixingRevision, Pair<Commit.Type, String> commitMessageTypeAndMessageFull)
     throws IOException, GitAPIException, Exception
   {
     ObjectId buggy = this.repository.resolve(buggyRevision + "^{tree}");
@@ -75,7 +76,7 @@ public class GitProjectAnalysis
     
     List<DiffEntry> diffs = diffCommand.call();
     
-    Commit commit = new Commit(this.projectID, this.projectHomepage, buggyRevision, bugFixingRevision, commitMessageType);
+    Commit commit = new Commit(this.projectID, this.projectHomepage, buggyRevision, bugFixingRevision, commitMessageTypeAndMessageFull.getLeft(), commitMessageTypeAndMessageFull.getRight());
     for (DiffEntry diff : diffs) {
       if ((diff.getOldPath().matches("^.*jquery.*$")) || (diff.getNewPath().matches("^.*jquery.*$")))
       {

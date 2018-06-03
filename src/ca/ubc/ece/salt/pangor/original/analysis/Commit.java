@@ -9,16 +9,19 @@ public class Commit
   public String url;
   public String buggyCommitID;
   public String repairedCommitID;
+  public String commitMessage;
   public Type commitMessageType;
   public List<SourceCodeFileChange> sourceCodeFileChanges;
   
-  public Commit(String projectID, String projectHomepage, String buggyCommitID, String repairedCommitID, Type commitMessageType)
+  public Commit(String projectID, String projectHomepage, String buggyCommitID, String repairedCommitID, Type commitMessageType, String commitMessage)
   {
     this.projectID = projectID;
     this.url = projectHomepage;
     this.buggyCommitID = buggyCommitID;
     this.repairedCommitID = repairedCommitID;
     this.commitMessageType = commitMessageType;
+    this.commitMessage = 
+    		(commitMessage == null || commitMessage == "") ? "" : commitMessage.replaceAll("\n", " ").replace("\r", "").replace("\t", "").trim();
     
     this.sourceCodeFileChanges = new LinkedList<SourceCodeFileChange>();
   }

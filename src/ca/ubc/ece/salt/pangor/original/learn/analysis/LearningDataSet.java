@@ -228,7 +228,8 @@ public class LearningDataSet
       }
       catch (Throwable localThrowable1)
       {
-        localThrowable3 = localThrowable1;throw localThrowable1;
+        localThrowable3 = localThrowable1;
+        throw localThrowable1;
       }
       finally
       {

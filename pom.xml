@@ -185,11 +185,22 @@
 			<artifactId>optics_dbscan</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>ca.ubc.ece.salt</groupId>
 			<artifactId>rhino</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.mozilla/rhino -->
+		<!-- 
+		<dependency>
+    		<groupId>org.mozilla</groupId>
+    		<artifactId>rhino</artifactId>
+    		<version>1.7.9</version>
+		</dependency>
+		-->
+		
 		<dependency>
 			<groupId>ca.ubc.ece.salt</groupId>
 			<artifactId>jdt-core</artifactId>
@@ -238,7 +249,7 @@
 			<artifactId>pangor-js-learn</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
- -->
+ 		-->
 	</dependencies>
 
 	<developers>

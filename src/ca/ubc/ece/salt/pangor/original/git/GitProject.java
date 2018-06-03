@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.tuple.Triple;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jgit.api.CloneCommand;
@@ -203,9 +204,9 @@ public class GitProject
     }
   }
   
-  protected List<Triple<String, String, Commit.Type>> getCommitPairs()
+  protected List<Triple<String, String, Pair<Commit.Type, String>>> getCommitPairs()
   {
-    List<Triple<String, String, Commit.Type>> bugFixingCommits = new LinkedList<Triple<String, String, Commit.Type>>();
+    List<Triple<String, String, Pair<Commit.Type, String>>> bugFixingCommits = new LinkedList<Triple<String, String, Pair<Commit.Type, String>>>();
     int mergeCommits = 0;int commitCounter = 0;
     
     Set<String> authorsEmails = new HashSet<String>();
@@ -222,27 +223,19 @@ public class GitProject
       return bugFixingCommits;
     }
 
+    Pair<Commit.Type, String> bugCommitMessageType;
+    
     for (RevCommit commit : commits)
     {
       PersonIdent authorIdent = commit.getAuthorIdent();
       authorsEmails.add(authorIdent.getEmailAddress());
       
-      Commit.Type commitMessageType = Commit.Type.OTHER;
-      String message = commit.getFullMessage();
       commitCounter++;
       
-      Pattern pEx = Pattern.compile("merge", 2);
-      Matcher mEx = pEx.matcher(message);
+      bugCommitMessageType = this.getCommitMessageType(commit);
       
-      Pattern pBFC = Pattern.compile(this.commitMessageRegex, 2);
-      Matcher mBFC = pBFC.matcher(message);
-      if (mEx.find()) {
-        commitMessageType = Commit.Type.MERGE;
-      } else if (mBFC.find()) {
-        commitMessageType = Commit.Type.BUG_FIX;
-      }
       if (commit.getParentCount() > 0) {
-        bugFixingCommits.add(Triple.of(commit.getParent(0).name(), commit.name(), commitMessageType));
+        bugFixingCommits.add(Triple.of(commit.getParent(0).name(), commit.name(),  bugCommitMessageType));
       }
       if (commitCounter == 1) {
         lastCommitDate = authorIdent.getWhen();
@@ -256,6 +249,35 @@ public class GitProject
     this.firstCommitDate = firstCommitDate;
     
     return bugFixingCommits;
+  }
+ 
+  /***
+   * Método para obter o Bug Fixing Commit (MERGE, BUG_FIX, OTHER) do commit. 
+   * O objetivo deste método, é melhorar o Recall desta abordagem do Hanam.
+   * @return Uma lista de Tuplas que contém o 
+   * @author Charles Mendes
+   */
+  private Pair<Commit.Type, String> getCommitMessageType(RevCommit commit){
+	  Pair<Commit.Type, String> bugFixingCommits;
+	  
+	  
+	  Commit.Type commitMessageType = Commit.Type.OTHER;
+      String message = commit.getFullMessage();
+      
+      Pattern pEx = Pattern.compile("merge", 2);
+      Matcher mEx = pEx.matcher(message);
+      
+      Pattern pBFC = Pattern.compile(this.commitMessageRegex, 2);
+      Matcher mBFC = pBFC.matcher(message);
+      if (mEx.find()) {
+        commitMessageType = Commit.Type.MERGE;
+      } else if (mBFC.find()) {
+        commitMessageType = Commit.Type.BUG_FIX;
+      }
+	  
+	  bugFixingCommits = Pair.of(commitMessageType, message);
+	  
+	  return bugFixingCommits;
   }
   
   protected static String getGitProjectName(String uri)

@@ -45,7 +45,7 @@ public class LearningFeatureVector
   
   public String serialize()
   {
-    String serialized = this.id + "," + this.commit.projectID + "," + this.commit.commitMessageType.toString() + "," + this.commit.url + "/commit/" + this.commit.repairedCommitID + "," + this.commit.buggyCommitID + "," + this.commit.repairedCommitID + "," + this.klass + "," + this.method + "," + this.modifiedStatementCount;
+    String serialized = this.id + "," + this.commit.projectID + "," + this.commit.commitMessageType.toString() + "," + this.commit.url + "/commit/" + this.commit.repairedCommitID + "," + this.commit.buggyCommitID + "," + this.commit.repairedCommitID + "," + this.klass + "," + this.method + "," + this.modifiedStatementCount + "," + this.commit.commitMessage;
     for (Map.Entry<KeywordUse, Integer> entry : this.keywordMap.entrySet()) {
       serialized = serialized + "," + ((KeywordUse)entry.getKey()).toString() + ":" + entry.getValue();
     }
@@ -54,7 +54,7 @@ public class LearningFeatureVector
   
   public String serializeWithCluster()
   {
-    String serialized = this.id + "," + this.commit.projectID + "," + this.commit.commitMessageType.toString() + "," + this.commit.url + "/commit/" + this.commit.repairedCommitID + "," + this.commit.buggyCommitID + "," + this.commit.repairedCommitID + "," + this.klass + "," + this.method + "," + this.modifiedStatementCount + "," + this.cluster;
+    String serialized = this.id + "," + this.commit.projectID + "," + this.commit.commitMessageType.toString() + "," + this.commit.url + "/commit/" + this.commit.repairedCommitID + "," + this.commit.buggyCommitID + "," + this.commit.repairedCommitID + "," + this.klass + "," + this.method + "," + this.modifiedStatementCount + "," + this.commit.commitMessage + "," + this.cluster;
     for (Map.Entry<KeywordUse, Integer> entry : this.keywordMap.entrySet()) {
       serialized = serialized + "," + ((KeywordUse)entry.getKey()).toString() + ":" + entry.getValue();
     }
@@ -79,7 +79,7 @@ public class LearningFeatureVector
     if (features.length < 8) {
       throw new Exception("De-serialization exception. Serial format not recognized.");
     }
-    Commit commit = new Commit(features[1], features[3], features[4], features[5], Commit.Type.valueOf(features[2]));
+    Commit commit = new Commit(features[1], features[3], features[4], features[5], Commit.Type.valueOf(features[2]), "");
     
     LearningFeatureVector featureVector = new LearningFeatureVector(commit, features[6], features[7], Integer.parseInt(features[8]), Integer.parseInt(features[0]));
     for (int i = 9; i < features.length; i++)

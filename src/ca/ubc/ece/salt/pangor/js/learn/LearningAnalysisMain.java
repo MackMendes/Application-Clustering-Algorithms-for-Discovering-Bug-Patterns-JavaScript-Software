@@ -120,6 +120,9 @@ public class LearningAnalysisMain {
 
 					/* Perform the analysis (this may take some time) */
 					executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
+					
+					//gitProjectAnalysis.analyze();
+					
 				} catch (Exception e) {
 					e.printStackTrace(System.err);
 					logger.error("[IMPORTANT] Project " + uri + " threw an exception");
