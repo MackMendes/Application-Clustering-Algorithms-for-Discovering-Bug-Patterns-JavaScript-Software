@@ -90,14 +90,19 @@ public class ClusterMetrics {
   {
     double tp = 0.0D;double fp = 0.0D;double tn = 0.0D;double fn = 0.0D;
     double classified = 0.0D;
-    double p = 0.0D;double r = 0.0D;double f = 0.0D;double fm = 0.0D;double inspect = 0.0D;
+    double presion = 0.0D;
+    double recall = 0.0D;
+    double fmeasure = 0.0D;
+    double fm = 0.0D;double inspect = 0.0D;
     int captured = 0;
     
     Map<String, Double> clusterCompositions = new HashMap<String, Double>();
     
     Map<String, Double> classCompositions = new HashMap<String, Double>();
     Map.Entry<Integer, String> entity;
-    Map<String, List<Integer>> expected = new HashMap<String, List<Integer>> ();
+    Map<String, List<Integer>> expected = new HashMap<String, List<Integer>>();
+    
+    // Obter o dataset do Oracle (Padrões de Defeitos - Label - com os commits)
     for (Iterator<Entry<Integer, String>> localIterator1 = oracle.entrySet().iterator(); localIterator1.hasNext();)
     {
       entity = localIterator1.next();
@@ -125,9 +130,12 @@ public class ClusterMetrics {
       for (Map.Entry<String, Integer> entry : composition)
       {
         String classID = (String)entry.getKey();
+        System.out.println(String.format("classID - Key: %s", classID));
+        System.out.println(String.format("classID - Value: %d", entry.getValue()));
+        
         if (!classID.equals("?"))
         {
-          double intersection = ((Integer)entry.getValue()).intValue();
+          double intersection = ((Integer)entry.getValue()).intValue();  // Entender o que é esse variável de Intersecção 
           double classSize = (expected.get(entry.getKey())).size();
           double clusterSize = cluster.instances.size();
           
@@ -165,10 +173,10 @@ public class ClusterMetrics {
     fn = classified - tp;
     tn = this.totalInstances - tp - fp - fn;
     
-    p = tp / (tp + fp);
-    r = tp / (tp + fn);
+    presion = tp / (tp + fp);
+    recall = tp / (tp + fn);
     
-    f = 2.0D * (p * r / (p + r));
+    fmeasure = 2.0D * (presion * recall / (presion + recall));
     fm = Math.sqrt(tp / (tp + fp) * (tp / (tp + fn)));
     
     inspect = (tp + fp) / (tp + fp + tn + fn);
@@ -177,7 +185,7 @@ public class ClusterMetrics {
     
     ConfusionMatrix confusionMatrix = new ConfusionMatrix((int)tp, (int)fp, (int)tn, (int)fn);
     
-    EvaluationResult evaluationResult = new EvaluationResult(confusionMatrix, this.epsilon, p, r, f, fm, inspect, captured, clusterCompositions, classCompositions);
+    EvaluationResult evaluationResult = new EvaluationResult(confusionMatrix, this.epsilon, presion, recall, fmeasure, fm, inspect, captured, clusterCompositions, classCompositions);
     
     return evaluationResult;
   }

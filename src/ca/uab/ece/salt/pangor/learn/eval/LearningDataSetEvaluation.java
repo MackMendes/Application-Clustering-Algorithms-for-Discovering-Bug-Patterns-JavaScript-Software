@@ -1,5 +1,7 @@
 package ca.uab.ece.salt.pangor.learn.eval;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 
 import org.apache.log4j.LogManager;
@@ -54,9 +56,11 @@ public class LearningDataSetEvaluation {
 			return;
 		}
 
-		double min = 0.1, max = 6, interval = 0.2;
+		double min = 0.1, max = 4, interval = 0.2;
 		EvaluationResult[][] results = new EvaluationResult[options.getDataSetPaths().length][(int)Math.ceil((max-min)/interval)];
-
+		
+		double complexityWeight = 0.2;
+		
 		/* Evaluate each data set. */
 		for(int i = 0; i < options.getDataSetPaths().length; i++) {
 
@@ -66,7 +70,6 @@ public class LearningDataSetEvaluation {
 			for(double epsilon = min; epsilon <= max; epsilon += interval) {
 
 				int j = (int)(epsilon / interval);
-				double complexityWeight = 0.2;
 
 				/* Re-construct the data set. */
 				LearningDataSet dataSet =
@@ -99,13 +102,55 @@ public class LearningDataSetEvaluation {
 
 		}
 
-		LearningDataSetEvaluation.printCSV(results, new String[]{"3", "5", "6", "7"});
+		String[] classes = new String[]{"3", "5", "6", "7"};
+		
+		StringBuilder sb = LearningDataSetEvaluation.printInCSV(results, classes);
+		
+	
+		LearningDataSetEvaluation.printCSV(results, classes);
+		
+		
+		
+		PrintWriter pw = new PrintWriter(new File("resultado_do_bugAID.csv"));
+		pw.write(sb.toString());
+        pw.close();
+        System.out.println("done!");
+		
+		
 		//System.out.println("-----------------");
 		//RLineChart.printPRChart(results);
 		//System.out.println("-----------------");
 		//RLineChart.printDensityChart(results, new String[]{"3", "5", "6", "7"});
 
 	}
+	
+	
+	/**
+	 * Print the evaluation results as a CSV file
+	 * @param results The results of the evaluation.
+	 */
+	private static StringBuilder printInCSV(EvaluationResult[][] results, String[] classes) {
+		
+		// Instância de String Builder
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(results[0][0].getConfusionMatrix());
+		sb.append("\n");
+		sb.append("\n");
+		
+		sb.append(results[0][0].getResultsArrayHeader());
+		for(int i = 0; i < results.length; i++) {
+			for(int j = 0; j < results[i].length; j++) {
+				sb.append("\n");
+				sb.append(i);
+				sb.append(" ;");
+				sb.append(results[i][j].getResultsArray(classes).toString());
+			}
+		}
+		
+		return sb;
+	}
+	
 
 	/**
 	 * Print the evaluation results as a CSV file

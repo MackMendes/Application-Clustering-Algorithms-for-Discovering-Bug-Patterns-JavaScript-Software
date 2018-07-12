@@ -118,13 +118,16 @@ public class LearningAnalysisMain {
 					gitProjectAnalysis = GitProjectAnalysis.fromURI(uri,
 							LearningAnalysisMain.CHECKOUT_DIR, options.getRegex(), commitAnalysis);
 
-					/* Perform the analysis (this may take some time) */
-					executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
+					/* Perform the analysis (this may take some time). 
+					   Executar o Analyse com multi-threads */
+					//executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
 					
-					//gitProjectAnalysis.analyze();
+					// Executar o Analyze sincrono  
+					gitProjectAnalysis.analyze();
 					
 				} catch (Exception e) {
 					e.printStackTrace(System.err);
+					//System.out("[IMPORTANT] Project " + uri + " threw an exception");
 					logger.error("[IMPORTANT] Project " + uri + " threw an exception");
 					logger.error(e);
 					continue;

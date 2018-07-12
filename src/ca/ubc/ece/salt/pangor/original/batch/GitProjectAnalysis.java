@@ -76,27 +76,35 @@ public class GitProjectAnalysis
     
     List<DiffEntry> diffs = diffCommand.call();
     
-    Commit commit = new Commit(this.projectID, this.projectHomepage, buggyRevision, bugFixingRevision, commitMessageTypeAndMessageFull.getLeft(), commitMessageTypeAndMessageFull.getRight());
+    //
+    Commit commit = new Commit(this.projectID, this.projectHomepage, buggyRevision, bugFixingRevision, 
+    		commitMessageTypeAndMessageFull.getLeft(), commitMessageTypeAndMessageFull.getRight());
+    
     for (DiffEntry diff : diffs) {
       if ((diff.getOldPath().matches("^.*jquery.*$")) || (diff.getNewPath().matches("^.*jquery.*$")))
       {
-        this.logger.info("[SKIP_FILE] jquery file: " + diff.getOldPath());
+        //this.logger.info("[SKIP_FILE] jquery file: " + diff.getOldPath());
+    	  System.out.println("[SKIP_FILE] jquery file: " + diff.getOldPath());
       }
       else
       {
         if ((diff.getOldPath().endsWith(".min.js")) || (diff.getNewPath().endsWith(".min.js")))
         {
-          this.logger.info("[SKIP_FILE] Skipping minifed file: " + diff.getOldPath());
+          //this.logger.info("[SKIP_FILE] Skipping minifed file: " + diff.getOldPath());
+            System.out.println("[SKIP_FILE] Skipping minifed file: " + diff.getOldPath());
           return;
         }
-        this.logger.debug("Exploring diff \n {} \n {} - {} \n {} - {}", new Object[] { getURI(), buggyRevision, diff.getOldPath(), bugFixingRevision, diff
-          .getNewPath() });
+        
+        System.out.println(String.format("Exploring diff \n %s \n %s - %s \n %s - %s", 
+        		getURI(), buggyRevision, diff.getOldPath(), bugFixingRevision, diff.getNewPath()));
+        
+        //this.logger.debug("Exploring diff \n {} \n {} - {} \n {} - {}", 
+        //		new Object[] { getURI(), buggyRevision, diff.getOldPath(), bugFixingRevision, diff.getNewPath() });
         
         String oldFile = fetchBlob(buggyRevision, diff.getOldPath());
         String newFile = fetchBlob(bugFixingRevision, diff.getNewPath());
         
-        commit.addSourceCodeFileChange(new SourceCodeFileChange(diff
-          .getOldPath(), diff.getNewPath(), oldFile, newFile));
+        commit.addSourceCodeFileChange(new SourceCodeFileChange(diff.getOldPath(), diff.getNewPath(), oldFile, newFile));
       }
     }
     

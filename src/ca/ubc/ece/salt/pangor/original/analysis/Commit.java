@@ -21,7 +21,8 @@ public class Commit
     this.repairedCommitID = repairedCommitID;
     this.commitMessageType = commitMessageType;
     this.commitMessage = 
-    		(commitMessage == null || commitMessage == "") ? "" : commitMessage.replaceAll("\n", " ").replace("\r", "").replace("\t", "").trim();
+    		(commitMessage == null || commitMessage == "") ? "" : 
+    			commitMessage.replaceAll("\n", " ").replace("\r", "").replace("\t", "").replace(",", ";").trim();
     
     this.sourceCodeFileChanges = new LinkedList<SourceCodeFileChange>();
   }

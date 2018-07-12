@@ -8,8 +8,8 @@ public class LearningDataSetEvaluationOptions {
 	@Option(name="-h", aliases={"--help"}, usage="Display the help file.")
 	private boolean help = false;
 
-	@Option(name="-ds", aliases={"--dataset"}, usage="The data set file to read.", handler = StringArrayOptionHandler.class, required=true)
-	private String[] dataSetPaths = null;
+	@Option(name="-ds", aliases={"--dataset"}, usage="The data set file to read.", handler = StringArrayOptionHandler.class)
+	private String[] dataSetPaths = new String[]{ "./output/dataset.csv" };
 
 	@Option(name="-cc", aliases={"--complexity"}, usage="The maximum number of modified statements for a feature vector.")
 	private int maxChangeComplexity = 6;

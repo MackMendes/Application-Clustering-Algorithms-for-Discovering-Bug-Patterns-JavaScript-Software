@@ -1,0 +1,26 @@
+              	Clustered	Not Clustered
+Classified    	0		21
+Not Classified	25		2831
+
+
+Class; Epsilon; Precision; Recall; FMeasure; FowlkesMallows; Inspected; CapturedPatterns
+0 ;0,10; 0,00; 0,00; NaN; 0,00; 0,01; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;0,30; 0,00; 0,00; NaN; 0,00; 0,01; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;0,50; 0,00; 0,00; NaN; 0,00; 0,02; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;0,70; 0,00; 0,00; NaN; 0,00; 0,02; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;0,90; 0,00; 0,00; NaN; 0,00; 0,02; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;1,10; 0,00; 0,00; NaN; 0,00; 0,05; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;1,30; 0,00; 0,00; NaN; 0,00; 0,06; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;1,50; 0,00; 0,00; NaN; 0,00; 0,06; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;1,70; 0,00; 0,00; NaN; 0,00; 0,06; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;1,90; 0,00; 0,00; NaN; 0,00; 0,06; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;2,10; 0,00; 0,00; NaN; 0,00; 0,10; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;2,30; 0,00; 0,00; NaN; 0,00; 0,11; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;2,50; 0,00; 0,00; NaN; 0,00; 0,11; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;2,70; 0,00; 0,00; NaN; 0,00; 0,11; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;2,90; 0,00; 0,00; NaN; 0,00; 0,11; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;3,10; 0,00; 0,00; NaN; 0,00; 0,12; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;3,30; 0,00; 0,00; NaN; 0,00; 0,13; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;3,50; 0,00; 0,00; NaN; 0,00; 0,13; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;3,70; 0,00; 0,00; NaN; 0,00; 0,13; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN
+0 ;3,90; 0,00; 0,00; NaN; 0,00; 0,13; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN

@@ -216,7 +216,8 @@ public class LearningDataSet
   {
     try
     {
-      BufferedReader reader = new BufferedReader(new FileReader(dataSetPath));Throwable localThrowable3 = null;
+      BufferedReader reader = new BufferedReader(new FileReader(dataSetPath));
+      Throwable localThrowable3 = null;
       try
       {
         for (String serialLearningFeatureVector = reader.readLine(); serialLearningFeatureVector != null; serialLearningFeatureVector = reader.readLine())

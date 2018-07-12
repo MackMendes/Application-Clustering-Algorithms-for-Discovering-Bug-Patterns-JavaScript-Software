@@ -5,6 +5,8 @@ import ca.ubc.ece.salt.pangor.original.analysis.Commit;
 import ca.ubc.ece.salt.pangor.original.analysis.FeatureVector;
 import ca.ubc.ece.salt.pangor.original.api.KeywordDefinition;
 import ca.ubc.ece.salt.pangor.original.api.KeywordUse;
+import ca.ubc.ece.salt.pangor.original.api.KeywordUse.KeywordContext;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,13 +84,22 @@ public class LearningFeatureVector
     Commit commit = new Commit(features[1], features[3], features[4], features[5], Commit.Type.valueOf(features[2]), "");
     
     LearningFeatureVector featureVector = new LearningFeatureVector(commit, features[6], features[7], Integer.parseInt(features[8]), Integer.parseInt(features[0]));
+    
+    //for (int i = 10; i < features.length; i++) // <-- Com o acrescimo da coluna contendo os comentários dos commits
     for (int i = 9; i < features.length; i++)
     {
       String[] feature = features[i].split(":");
       if (feature.length < 6) {
         throw new Exception("De-serialization exception. Serial format not recognized.");
       }
-      KeywordUse keyword = new KeywordUse(KeywordDefinition.KeywordType.valueOf(feature[0]), KeywordUse.KeywordContext.valueOf(feature[1]), feature[4], ClassifiedASTNode.ChangeType.valueOf(feature[2]), feature[3]);
+      
+      KeywordDefinition.KeywordType typeP = KeywordDefinition.KeywordType.valueOf(feature[0]);
+      KeywordContext contextP =  KeywordUse.KeywordContext.valueOf(feature[1]);
+      String keywordP = feature[4];
+      ClassifiedASTNode.ChangeType changeTypeP = ClassifiedASTNode.ChangeType.valueOf(feature[2]);
+      String apiP = feature[3];
+      
+      KeywordUse keyword = new KeywordUse(typeP, contextP, keywordP, changeTypeP, apiP);
       
       featureVector.addKeyword(keyword, Integer.valueOf(Integer.parseInt(feature[5])));
     }

@@ -39,33 +39,38 @@ public class EvaluationResult {
     }
 
     public String getResultsArrayHeader() {
-        return "Class, Epsilon, Precision, Recall, FMeasure, FowlkesMallows, Inspected, CapturedPatterns";
+        return "Class; Epsilon; Precision; Recall; FMeasure; FowlkesMallows; Inspected; CapturedPatterns; ClusterComposition; ClasseComposition;";
     }
 
     public String getResultsArray(String[] classes) {
         String array = "";
-        array = array + String.format("%.2f,%.2f, %.2f, %.2f, %.2f, %.2f, %s", this.epsilon, this.precision, this.recall, this.fMeasure, this.fowlkesMallows, this.inspected, this.patternRecall);
+        String arrayClusterComp = ";";
+        String arrayClassComp = ";";
+        array = array + String.format("#;%.2f; %.2f; %.2f; %.2f; %.2f; %.2f; %s", this.epsilon, this.precision, this.recall, this.fMeasure, this.fowlkesMallows, this.inspected, this.patternRecall);
         double totalClusterComp = 0.0D;
         double totalClassComp = 0.0D;
         double totalInst = 0.0D;
         for (int k = 0; k < classes.length; k++) {
             Double clusterComp = this.clusterComposition.get(classes[k]);
             if (clusterComp == null) {
-                array = array + ",NA";
+            	arrayClusterComp = arrayClusterComp + String.format("%s{%d=NA}", (arrayClusterComp.length() > 1 ? ", " : ""), k);
             } else {
                 totalClusterComp += clusterComp.doubleValue();
                 totalInst += 1.0D;
-                array = array + String.format(",%.2f", clusterComp);
+                arrayClusterComp = arrayClusterComp + String.format("%s{%d=%.2f}", (arrayClusterComp.length() > 1 ? ", " : ""), k, clusterComp);
             }
+            
             Double classComp = this.classComposition.get(classes[k]);
             if (classComp == null) {
-                array = array + ",NA";
+            	arrayClassComp = arrayClassComp + String.format("%s{%d=NA}",(arrayClassComp.length() > 1 ? ", " : ""), k);
                 continue;
             }
             totalClassComp += classComp.doubleValue();
-            array = array + String.format(",%.2f", classComp);
+            arrayClassComp = arrayClassComp + String.format("%s{%d=%.2f}", (arrayClassComp.length() > 1 ? ", " : ""), k, classComp);
         }
-        array = array + String.format(",%.2f,%.2f", totalClusterComp / totalInst, totalClassComp / totalInst);
+        array = array + arrayClusterComp + arrayClassComp + 
+        		String.format("; %.2f; %.2f", totalClusterComp / totalInst, totalClassComp / totalInst);
+        
         return array;
     }
 }

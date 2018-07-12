@@ -1,0 +1,7 @@
+              	Clustered	Not Clustered
+Classified    	0		31
+Not Classified	5273		25244
+
+
+Class; Epsilon; Precision; Recall; FMeasure; FowlkesMallows; Inspected; CapturedPatterns
+0,30; 0,00; 0,00; NaN; 0,00; 0,17; 0;NA;NA;NA;NA;NA;NA;NA;NA;NaN;NaN

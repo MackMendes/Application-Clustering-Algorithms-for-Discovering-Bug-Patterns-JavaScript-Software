@@ -207,7 +207,8 @@ public class GitProject
   protected List<Triple<String, String, Pair<Commit.Type, String>>> getCommitPairs()
   {
     List<Triple<String, String, Pair<Commit.Type, String>>> bugFixingCommits = new LinkedList<Triple<String, String, Pair<Commit.Type, String>>>();
-    int mergeCommits = 0;int commitCounter = 0;
+    int mergeCommits = 0;
+    int commitCounter = 0;
     
     Set<String> authorsEmails = new HashSet<String>();
     Iterable<RevCommit> commits;
@@ -260,15 +261,28 @@ public class GitProject
   private Pair<Commit.Type, String> getCommitMessageType(RevCommit commit){
 	  Pair<Commit.Type, String> bugFixingCommits;
 	  
+	  String commitMessageRegexNew = "";
 	  
 	  Commit.Type commitMessageType = Commit.Type.OTHER;
       String message = commit.getFullMessage();
+      String messageWork = message;
       
-      Pattern pEx = Pattern.compile("merge", 2);
-      Matcher mEx = pEx.matcher(message);
+      if(messageWork != null && messageWork != ""){
+    	  messageWork = messageWork.replaceAll("\n", " ");
+          messageWork = messageWork.replace("\r", "");
+          messageWork = messageWork.replace("\t", "");
+          messageWork = messageWork.trim();
+          messageWork = messageWork.toLowerCase();
+      }
       
-      Pattern pBFC = Pattern.compile(this.commitMessageRegex, 2);
-      Matcher mBFC = pBFC.matcher(message);
+      Pattern pEx = Pattern.compile("merge", Pattern.CASE_INSENSITIVE);
+      Matcher mEx = pEx.matcher(messageWork);
+      // commitMessageRegexNew = this.commitMessageRegex;
+      
+      commitMessageRegexNew = "fix.*fixed.*fixes.*bug.*error.*errors";
+      
+      Pattern pBFC = Pattern.compile(commitMessageRegexNew, Pattern.CASE_INSENSITIVE);
+      Matcher mBFC = pBFC.matcher(messageWork);
       if (mEx.find()) {
         commitMessageType = Commit.Type.MERGE;
       } else if (mBFC.find()) {

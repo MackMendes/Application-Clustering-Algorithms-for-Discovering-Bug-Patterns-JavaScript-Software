@@ -3,6 +3,7 @@ package ca.ubc.ece.salt.pangor.learn;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+import java.util.Date;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -44,6 +46,8 @@ public class LearningDataSetMain {
 
 	protected static final Logger logger = LogManager.getLogger(LearningDataSetMain.class);
 
+	protected static String str = "";
+	
 	/**
 	 * Creates the learning data sets for extracting repair patterns.
 	 * @param args
@@ -51,6 +55,12 @@ public class LearningDataSetMain {
 	 */
 	public static void main(String[] args) throws Exception {
 
+		// Formação da hora atual
+		Date dateNow = new Date();
+		SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");    
+		str = fmt.format(dateNow);  
+		// ===
+		
 		LearningDataSetOptions options = new LearningDataSetOptions();
 		CmdLineParser parser = new CmdLineParser(options);
 
@@ -135,14 +145,34 @@ public class LearningDataSetMain {
 			}
 			
 			// Colocar o DataSet no csv
-			PrintWriter pw = new PrintWriter(new File("dataset_bugid_with_header.csv"));
+			PrintWriter pw = new PrintWriter(new File(String.format("dataset_bugid_with_header_%s.csv", str)));
 			pw.write(sb.toString());
 	        pw.close();
 	        System.out.println("done!");
 			
+
+			//Acionando o DBScan do Weka 
+			
+			try {
+				clusteringDataSet.getWekaClusters(clusterMetrics);
+			} catch (WekaException ex) {
+				logger.error("Weka error on building clusters.", ex);
+			}
+
 			
 			
-			clusteringDataSet.getWekaClusters(clusterMetrics);
+			/* Verificar o resultado do cluster */
+			EvaluationResult result = clusteringDataSet.evaluate(clusterMetrics);
+			
+			String[] classes = new String[]{"3", "5", "6", "7"};
+			StringBuilder sbEvalute =  exportResultEvaluteInCSV(result, classes);
+			
+			PrintWriter pwEvalute = new PrintWriter(new File(String.format("resultado_do_bugAID_Evalute_%s.csv", str)));
+			pwEvalute.write(sbEvalute.toString());
+			pwEvalute.close();
+	        System.out.println("Done result evaluate!");
+			// 
+			
 			
 			
 		} catch (WekaException ex) {
@@ -227,13 +257,33 @@ public class LearningDataSetMain {
 		}
 		
 		// Colocar o DataSet no csv
-		PrintWriter pw = new PrintWriter(new File("dataset_result_DBScan_with_instances.csv"));
+		PrintWriter pw = new PrintWriter(new File(String.format("dataset_result_DBScan_with_instances_%s.csv", str)));
 		pw.write(sb.toString());
         pw.close();
         System.out.println("Done Export Result DBScan!");
 		
 	}
 	
+	
+	/**
+	 * Print the evaluation results as a CSV file
+	 * @param results The results of the evaluation.
+	 */
+	private static StringBuilder exportResultEvaluteInCSV(EvaluationResult results, String[] classes) {
+		
+		// Instância de String Builder
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(results.getConfusionMatrix());
+		sb.append("\n");
+		sb.append("\n");
+		
+		sb.append(results.getResultsArrayHeader());
+		sb.append("\n");
+		sb.append(results.getResultsArray(classes).toString());
+		
+		return sb;
+	}
 	
 	
 	/**
@@ -297,11 +347,15 @@ public class LearningDataSetMain {
 				Factory.BASIC.createLiteral(true,
 					Factory.BUILTIN.createNotExactEqual(
 						Factory.TERM.createVariable("CommitMessage"),
-						Factory.TERM.createString(Type.MERGE.toString()))));
-//				Factory.BASIC.createLiteral(true,
-//					Factory.BUILTIN.createEqual(
-//						Factory.TERM.createVariable("CommitMessage"),
-//						Factory.TERM.createString(Type.BUG_FIX.toString())))
+						Factory.TERM.createString(Type.MERGE.toString())))
+				//, 
+				);
+				
+				// As linhas abaixo, estavam comentadas
+				//Factory.BASIC.createLiteral(true,
+				//	Factory.BUILTIN.createEqual(
+				//		Factory.TERM.createVariable("CommitMessage"),
+				//		Factory.TERM.createString(Type.BUG_FIX.toString()))));
 
 		return query;
 
