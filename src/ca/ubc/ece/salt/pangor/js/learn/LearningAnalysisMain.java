@@ -123,7 +123,8 @@ public class LearningAnalysisMain {
 					//executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
 					
 					// Executar o Analyze sincrono  
-					gitProjectAnalysis.analyze();
+					gitProjectAnalysis.analyze(); 
+					//gitProjectAnalysis = null;
 					
 				} catch (Exception e) {
 					e.printStackTrace(System.err);

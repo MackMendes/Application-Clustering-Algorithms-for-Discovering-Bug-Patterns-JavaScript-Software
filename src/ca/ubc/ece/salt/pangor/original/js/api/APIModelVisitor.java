@@ -61,13 +61,20 @@ implements NodeVisitor {
         KeywordUse.KeywordContext context;
         token = "";
         type = JSAPIUtilities.getTokenType(node);
+        
+        if(type == KeywordDefinition.KeywordType.UNKNOWN){
+        	return;
+        }
+        
         context = JSAPIUtilities.getTokenContext(node);
-        if ((type == KeywordDefinition.KeywordType.UNKNOWN) || (context == KeywordUse.KeywordContext.UNKNOWN)) {
+        if (context == KeywordUse.KeywordContext.UNKNOWN) {
             return;
         }
+        
         if (changeType == ClassifiedASTNode.ChangeType.MOVED) {
             changeType = ClassifiedASTNode.ChangeType.UNCHANGED;
         }
+        
         if (SpecialTypeAnalysisUtilities.isFalsey(node)) {
             keyword = null;
             keyword = new KeywordUse(type, context, "falsey", changeType);

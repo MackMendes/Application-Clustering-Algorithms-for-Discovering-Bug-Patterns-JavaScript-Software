@@ -76,18 +76,25 @@ public class KeywordUse
   
   public String toString()
   {
+	  String bct = "";
     if (this.type == KeywordDefinition.KeywordType.PACKAGE) {
-      return this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.keyword;
+    	bct = this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.keyword;
+    	System.out.println("type PACKAGE = " + bct);
+    	return bct;
     }
     if (this.api != null) {
-      return this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.api.getName() + ":" + this.keyword;
+    	bct = this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.api.getName() + ":" + this.keyword;
+    	System.out.println("api = " + bct);
+    	return bct;
     }
-    return this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.apiPackage + ":" + this.keyword;
+    bct = this.type.toString() + ":" + this.context.toString() + ":" + this.changeType.toString() + ":" + this.apiPackage + ":" + this.keyword;
+    System.out.println("default = " + bct);
+    return bct;
   }
   
   public static enum KeywordContext
   {
-    UNKNOWN,  CONDITION,  EXPRESSION,  ASSIGNMENT_LHS,  ASSIGNMENT_RHS,  REQUIRE,  CLASS_DECLARATION,  METHOD_DECLARATION,  PARAMETER_DECLARATION,  VARIABLE_DECLARATION,  METHOD_CALL,  ARGUMENT,  EXCEPTION_CATCH,  EVENT_REGISTER,  EVENT_REMOVE,  STATEMENT;
+    UNKNOWN,  CONDITION,  EXPRESSION,  ASSIGNMENT_LHS,  ASSIGNMENT_RHS,  REQUIRE,  CLASS_DECLARATION,  METHOD_DECLARATION,  PARAMETER_DECLARATION,  VARIABLE_DECLARATION_VAR, VARIABLE_DECLARATION_LET, VARIABLE_DECLARATION_CONST, VARIABLE_DECLARATION,  METHOD_CALL,  ARGUMENT,  EXCEPTION_CATCH,  EVENT_REGISTER,  EVENT_REMOVE,  STATEMENT;
     
     private KeywordContext() {}
   }

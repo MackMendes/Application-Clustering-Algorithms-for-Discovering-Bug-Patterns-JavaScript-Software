@@ -224,6 +224,8 @@ public class LearningDataSet
         {
           LearningFeatureVector featureVector = LearningFeatureVector.deSerialize(serialLearningFeatureVector);
           
+          System.out.println(featureVector.toString());
+          
           this.featureVectors.add(featureVector);
         }
       }

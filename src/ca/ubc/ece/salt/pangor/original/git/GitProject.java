@@ -279,7 +279,7 @@ public class GitProject
       Matcher mEx = pEx.matcher(messageWork);
       // commitMessageRegexNew = this.commitMessageRegex;
       
-      commitMessageRegexNew = "fix.*fixed.*fixes.*bug.*error.*errors";
+      commitMessageRegexNew = "(fix |fixed|fixes|bug|error|hotfix|failure|fault|defect| miss )";
       
       Pattern pBFC = Pattern.compile(commitMessageRegexNew, Pattern.CASE_INSENSITIVE);
       Matcher mBFC = pBFC.matcher(messageWork);

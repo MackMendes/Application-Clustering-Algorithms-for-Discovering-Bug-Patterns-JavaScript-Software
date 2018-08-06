@@ -52,8 +52,8 @@ public class JSAPIUtilities
     		"continue", "debugger", "default", "delete", "do", "double", "else", "enum", "eval ", "export", 
     		"extends", "false", "final", "finally", "float", "for", "function", "goto", "if", "implements", 
     		"import", "in", "instanceof", "int", "interface", "let", "long", "module", "native", "new", 
-    		"Number", "null", "package", "private", "protected", "public", "RegExp", "return", "short", 
-    		"static", "String", "super", "switch", "synchronized", "this", "throw", "throws", "transient", 
+    		"null", "package", "private", "protected", "public", "return", "short", 
+    		"static", "super", "switch", "synchronized", "this", "throw", "throws", "transient", 
     		"true", "try", "typeof", "undefined ", "var", "void", "volatile", "while", "with", "yield" });
     
     if ((token instanceof Name))
@@ -223,9 +223,21 @@ public class JSAPIUtilities
     }
     else if ((parent instanceof VariableInitializer))
     {
+      String nodeType = "";
       VariableInitializer initializer = (VariableInitializer)parent;
       if (initializer.getTarget() == token) {
-        return KeywordUse.KeywordContext.VARIABLE_DECLARATION;
+    	  nodeType = initializer.getASTNodeType();
+    	  
+    	  switch (nodeType.trim()) {
+			case "VAR":
+				return KeywordUse.KeywordContext.VARIABLE_DECLARATION_VAR;
+			case "LET":
+				return KeywordUse.KeywordContext.VARIABLE_DECLARATION_LET;
+			case "CONST":
+				return KeywordUse.KeywordContext.VARIABLE_DECLARATION_CONST;
+			default:
+				return KeywordUse.KeywordContext.VARIABLE_DECLARATION;
+    	  }
       }
     }
     else if ((parent instanceof FunctionCall))
