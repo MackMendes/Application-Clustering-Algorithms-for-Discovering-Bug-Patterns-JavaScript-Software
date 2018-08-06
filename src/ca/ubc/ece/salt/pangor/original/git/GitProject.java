@@ -262,6 +262,7 @@ public class GitProject
 	  Pair<Commit.Type, String> bugFixingCommits;
 	  
 	  String commitMessageRegexNew = "";
+	  String commitMessageRegexRefactoring = "";
 	  
 	  Commit.Type commitMessageType = Commit.Type.OTHER;
       String message = commit.getFullMessage();
@@ -278,16 +279,22 @@ public class GitProject
       Pattern pEx = Pattern.compile("merge", Pattern.CASE_INSENSITIVE);
       Matcher mEx = pEx.matcher(messageWork);
       // commitMessageRegexNew = this.commitMessageRegex;
-      
+           
       commitMessageRegexNew = "(fix |fixed|fixes|bug|error|hotfix|failure|fault|defect| miss )";
-      
       Pattern pBFC = Pattern.compile(commitMessageRegexNew, Pattern.CASE_INSENSITIVE);
       Matcher mBFC = pBFC.matcher(messageWork);
+      
+      commitMessageRegexRefactoring = "(refactoring|refactored|refactor)"; 
+      Pattern pREF = Pattern.compile(commitMessageRegexRefactoring, Pattern.CASE_INSENSITIVE);
+      Matcher mREF = pREF.matcher(messageWork);
+      
       if (mEx.find()) {
         commitMessageType = Commit.Type.MERGE;
       } else if (mBFC.find()) {
         commitMessageType = Commit.Type.BUG_FIX;
-      }
+      } else if (mREF.find()) {
+    	commitMessageType = Commit.Type.REFACTORING;
+      }  
 	  
 	  bugFixingCommits = Pair.of(commitMessageType, message);
 	  

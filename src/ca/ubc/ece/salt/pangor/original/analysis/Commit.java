@@ -53,7 +53,7 @@ public class Commit
   
   public static enum Type
   {
-    BUG_FIX,  MERGE,  OTHER;
+    BUG_FIX,  MERGE,  OTHER, REFACTORING;
     
     private Type() {}
   }
