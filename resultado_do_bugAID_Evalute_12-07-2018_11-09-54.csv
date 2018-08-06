@@ -1,7 +1,0 @@
-              	Clustered	Not Clustered
-Classified    	10		0
-Not Classified	5492		26260
-
-
-Class; Epsilon; Precision; Recall; FMeasure; FowlkesMallows; Inspected; CapturedPatterns; ClusterComposition; ClasseComposition;
-#;0,30; 0,00; 1,00; 0,00; 0,04; 0,17; 5;{0=0,06}, {1=NA}, {2=NA}, {3=NA};{0=1,00}, {1=NA}, {2=NA}, {3=NA}; 0,06; 1,00

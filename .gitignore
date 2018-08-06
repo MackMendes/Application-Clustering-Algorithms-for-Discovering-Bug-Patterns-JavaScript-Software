@@ -14,3 +14,7 @@ output/
 target/
 dependencies/
 input/promises.txt
+*.csv
+MeusResultados/
+resultsBugAID/
+Datasets/
