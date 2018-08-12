@@ -1,0 +1,3 @@
+ClusterID; BCTs; BasicChanges; Complexity; ProjectCount; Instances; ContainsInstances
+0 ; RESERVED:CONDITION:INSERTED:global:undefined:1.0 , RESERVED:CONDITION:INSERTED:global:typeof:1.0 ; 2 ; 1 ; 2 ; 5 ; 1090, 531, 5013, 566, 359
+1 ; RESERVED:CONDITION:INSERTED:global:falsey:1.0 , RESERVED:STATEMENT:UPDATED:global:var:1.0 ; 2 ; 1 ; 1 ; 5 ; 4496, 4691, 5156, 4565, 5517

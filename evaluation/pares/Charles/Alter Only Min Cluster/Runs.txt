@@ -1,0 +1,30 @@
+--dataset ./output/dataset-evaluation-charles.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 06-08-2018_22-44-25
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-charles.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 3
+
+= 06-08-2018_22-46-02
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-charles.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.4 --complexityWeight 0.2 --minClusterSize 3
+
+= 06-08-2018_22-47-31
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-charles.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 4
+
+= 06-08-2018_22-50-18
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-charles.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 6
+
+= Erro por zero cluster
+
+---------------------------
+

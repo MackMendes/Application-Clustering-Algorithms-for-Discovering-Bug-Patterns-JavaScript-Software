@@ -1,0 +1,65 @@
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 1 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-04-23
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 2 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-04-33
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 3 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-04-46
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 4 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-04-55
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 5 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-05
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 6 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-23
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 7 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-33
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 8 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-41
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 9 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-49
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 10 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-05-59
+
+---------------------------
+
+--dataset ./output/dataset-evaluation-hanam.csv --oracle ./oracle/oracle.csv --complexity 11 --epsilon 0.3 --complexityWeight 0.2 --minClusterSize 2
+
+= 08-08-2018_19-06-10
+
+---------------------------
