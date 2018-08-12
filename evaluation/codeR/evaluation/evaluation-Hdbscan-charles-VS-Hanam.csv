@@ -1,0 +1,20 @@
+"","ID","MinPts","Method_HDBScan_Charles","Dist_Method_HDBScan_Charles","TotalCluster_Charles","TotalOutliers_Charles","Jaccard_Charles","Rand_Charles","TotalCluster_Hanam","Method_HDBScan_Hanam","Dist_Method_HDBScan_Hanam","TotalOutliers_Hanam","Jaccard_Hanam","Rand_Hanam","dirf_Charles_Vs_Hanam"
+"1",1,2,"robust single","mutual reachability",2,6,0.517241379310345,0.741538461538462,2,"robust single","mutual reachability",4,0.401826484018265,0.596923076923077,FALSE
+"2",2,3,"robust single","mutual reachability",2,7,0.451428571428571,0.704615384615385,2,"robust single","mutual reachability",7,0.451428571428571,0.704615384615385,TRUE
+"3",3,4,"robust single","mutual reachability",2,12,0.345454545454545,0.667692307692308,2,"robust single","mutual reachability",12,0.345454545454545,0.667692307692308,TRUE
+"4",4,5,"robust single","mutual reachability",2,12,0.345454545454545,0.667692307692308,2,"robust single","mutual reachability",12,0.345454545454545,0.667692307692308,TRUE
+"5",5,6,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"6",6,7,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"7",7,8,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"8",8,9,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"9",9,10,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"10",10,11,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"11",11,12,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"12",12,13,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"13",13,14,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"14",14,15,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"15",15,16,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"16",16,17,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"17",17,18,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"18",18,19,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE
+"19",19,20,"robust single","mutual reachability",0,26,0.338461538461538,0.338461538461538,0,"robust single","mutual reachability",26,0.338461538461538,0.338461538461538,TRUE

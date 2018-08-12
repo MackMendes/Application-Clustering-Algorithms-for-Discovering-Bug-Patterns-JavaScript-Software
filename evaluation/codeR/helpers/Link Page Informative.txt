@@ -1,0 +1,10 @@
+
+== BugAID - Site do Portal do grupo de estudos
+http://salt.ece.ubc.ca/software/bugaid/
+
+== Projeto Pangor (contêm o código de extração dos commits e BCTs) 
+https://github.com/saltlab/Pangor
+http://salt.ece.ubc.ca/software/pangor/
+
+== Evolução do projeto Pangor utilizado no BugAID
+https://github.com/saltlab/CommitMiner
