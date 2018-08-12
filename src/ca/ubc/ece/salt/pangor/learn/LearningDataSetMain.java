@@ -10,7 +10,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.Consumer;
 import java.util.Date;
 
 import org.apache.log4j.LogManager;
@@ -22,14 +21,12 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
 import weka.core.Instance;
-import weka.core.Instances;
 import weka.core.WekaException;
 import ca.ubc.ece.salt.gumtree.ast.ClassifiedASTNode.ChangeType;
 import ca.ubc.ece.salt.pangor.original.analysis.Commit.Type;
 import ca.ubc.ece.salt.pangor.original.api.KeywordUse;
 import ca.ubc.ece.salt.pangor.original.api.KeywordUse.KeywordContext;
 import ca.ubc.ece.salt.pangor.original.learn.Cluster;
-import ca.ubc.ece.salt.pangor.original.learn.ClusterMetrics;
 import ca.ubc.ece.salt.pangor.original.learn.EvaluationResult;
 import ca.ubc.ece.salt.pangor.original.learn.analysis.LearningDataSet;
 import ca.ubc.ece.salt.pangor.original.learn.analysis.LearningMetrics;
@@ -162,14 +159,14 @@ public class LearningDataSetMain {
 			
 			
 			/* Verificar o resultado do cluster */
-			EvaluationResult result = clusteringDataSet.evaluate(clusterMetrics);
+			//EvaluationResult result = clusteringDataSet.evaluate(clusterMetrics);
 			
-			String[] classes = new String[]{"3", "5", "6", "7"};
-			StringBuilder sbEvalute =  exportResultEvaluteInCSV(result, classes);
+			//String[] classes = new String[]{"3", "5", "6", "7"};
+			//StringBuilder sbEvalute =  exportResultEvaluteInCSV(result, classes);
 			
-			PrintWriter pwEvalute = new PrintWriter(new File(String.format("resultado_do_bugAID_Evalute_%s.csv", str)));
-			pwEvalute.write(sbEvalute.toString());
-			pwEvalute.close();
+			//PrintWriter pwEvalute = new PrintWriter(new File(String.format("resultado_do_bugAID_Evalute_%s.csv", str)));
+			//pwEvalute.write(sbEvalute.toString());
+			//pwEvalute.close();
 	        System.out.println("Done result evaluate!");
 			// 
 			

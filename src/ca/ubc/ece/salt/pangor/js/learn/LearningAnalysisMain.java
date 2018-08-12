@@ -120,10 +120,10 @@ public class LearningAnalysisMain {
 
 					/* Perform the analysis (this may take some time). 
 					   Executar o Analyse com multi-threads */
-					//executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
+					executor.submit(new GitProjectAnalysisTask(gitProjectAnalysis, latch));
 					
 					// Executar o Analyze sincrono  
-					gitProjectAnalysis.analyze(); 
+					//gitProjectAnalysis.analyze(); 
 					//gitProjectAnalysis = null;
 					
 				} catch (Exception e) {
