@@ -18,11 +18,12 @@ Applications developed with JavaScript language are increasing every day, not on
 
 
 ## Fonts: 
-* [Discovering Bug Patterns in JavaScript](http://salt.ece.ubc.ca/software/bugaid/). Quinn Hanam, Fernando S de M Brito, and Ali Mesbah. 2016. In Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering. ACM, 144–156.
-* [K-Means](https://pdfs.semanticscholar.org/a718/b85520bea702533ca9a5954c33576fd162b0.pdf)
-* [C-Means Fuzzy](https://pdfs.semanticscholar.org/b9f0/7a272c1a7ac981d8b88889bc100442f26db3.pdf)
-* [DBScan](https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf)
-* [Optics](http://www.dbs.ifi.lmu.de/Publikationen/Papers/OPTICS.pdf)
-* [HDBScan](https://www.researchgate.net/publication/315508524_hdbscan_Hierarchical_density_based_clustering)
-* [HDBScan Documention](https://media.readthedocs.org/pdf/hdbscan/latest/hdbscan.pdf)
-* [Efficient Computation of Multiple Density-Based Clustering Hierarchies](https://arxiv.org/pdf/1709.04545.pdf)
+* [Discovering Bug Patterns in JavaScript](http://salt.ece.ubc.ca/software/bugaid/). Quinn Hanam, Fernando S de M Brito, and Ali Mesbah. 2016. In Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering. ACM, 144–156;
+* [Pangor](https://github.com/saltlab/Pangor);
+* [K-Means](https://pdfs.semanticscholar.org/a718/b85520bea702533ca9a5954c33576fd162b0.pdf);
+* [C-Means Fuzzy](https://pdfs.semanticscholar.org/b9f0/7a272c1a7ac981d8b88889bc100442f26db3.pdf);
+* [DBScan](https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf);
+* [Optics](http://www.dbs.ifi.lmu.de/Publikationen/Papers/OPTICS.pdf);
+* [HDBScan](https://www.researchgate.net/publication/315508524_hdbscan_Hierarchical_density_based_clustering);
+* [HDBScan Documention](https://media.readthedocs.org/pdf/hdbscan/latest/hdbscan.pdf);
+* [Efficient Computation of Multiple Density-Based Clustering Hierarchies](https://arxiv.org/pdf/1709.04545.pdf).
