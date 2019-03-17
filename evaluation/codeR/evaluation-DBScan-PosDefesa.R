@@ -1,6 +1,6 @@
 
 # ============================================================
-# EVALUATION - Optics
+# EVALUATION - DBScan
 # ============================================================
 # Realiza a clusterização das característas obtidas na Mineração de códigos no GitHub
 # ===========
@@ -9,12 +9,17 @@ setwd("G:/Mestrado/Meus experimentos/BugAID-Modificado/evaluation/codeR")
 
 
 # ===========
-# Leitura de CSV (apenas com 31 comits)
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits_charles.csv", header=TRUE, sep=",")
-dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits+outliers_charles.csv", header=TRUE, sep=",")
+# Leitura de CSV
+#dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL_Equals.csv", header=TRUE, sep=",")
+#dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL_Equals.csv", header=TRUE, sep=",")
 
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits_hanam.csv", header=TRUE, sep=",")
-dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits+outliers_hanam.csv", header=TRUE, sep=",")
+# Leitura de CSV (75 commits)
+#dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Amostra75vsAll-Charles_Equals.csv", header=TRUE, sep=",")
+#dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Amostra75vsAll-Haman_Equals.csv", header=TRUE, sep=",")
+
+# Leitura de CSV (51 commits)
+dataset.charles <- read.csv(file="datasets/posdefesa/dataset_bugid_with_header_Amostra51vsAll-Charles_Equals.csv", header=TRUE, sep=",")
+dataset.hanam <- read.csv(file="datasets/posdefesa/dataset_bugid_with_header_Amostra51vsAll-Haman_Equals.csv", header=TRUE, sep=",")
 
 
 # ===========
@@ -34,6 +39,8 @@ library("clusteval")
 if(!require(dbscan)) install.packages("dbscan")
 library("dbscan")
 
+if(!require(mclust)) install.packages("mclust")
+library("mclust")
 
 # ===========
 # Evaluation 
@@ -50,19 +57,25 @@ jaccard_Hanam <- double()
 rand_Charles <- double()
 rand_Hanam <- double()
 
+adjustedRand_Charles <- double()
+adjustedRand_Hanam <- double()
+
 
 resultClustering_Charles <- list()
 resultClustering_Hanam <- list()
 
 n <- 1
 
-# Resultados esperados 
-# resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6)
-resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6,0,0,0)
+# ====
+# Pós Defesa
+#resultExpected <- c(1,1,1,1,2,2,2,3,3,3,4,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0,9,9,9,9,10,10,10,10,10,11,11,0,11,11,0,0,12,12,12,0,0,0,0,0,0,0,0,0,0,13,13,13,14,14,14,14,14,0,15,15,0,0,0,16,16,0,16,0) 
+#resultExpected <- c(1,1,1,1,2,2,2,11,11,11,3,3,3,3,4,4,4,4,4,4,0,5,5,6,0,0,0,7,7,7,3,8,1,8,8,2,2,9,9,9,9,11,11,9,9,9,11,11,11,4,11,10,10,10,14,12,11,13,15,15,2,11,11,2,2,11,11,11,11,11,16,11,0,11,0)
+resultExpected <- c(1,1,2,2,2,3,3,3,4,4,4,4,5,5,5,5,6,6,7,0,0,0,8,8,8,8,8,3,9,9,9,9,10,11,11,11,11,12,12,12,2,3,3,2,2,13,13,13,13,0,0)
 
+# ====
 
 for (iEps in rangeEpsilon) {
-  
+ 
   for (jMinpts in rangeMinPts) {
     
     dsResultComplet[n,"ID"] <- n
@@ -71,20 +84,16 @@ for (iEps in rangeEpsilon) {
     
     dsResultComplet[n,"MinPts"] <- jMinpts
     
-    dsResultComplet[n,"Epsilon_identify"] <- iEps
-    
     # ===== 
     # Charles
     
-    resultClustering_Charles <- dbscan::optics(db_charles,  eps = iEps, minPts = jMinpts)
-    
-    resultClustering_Charles <- extractDBSCAN(resultClustering_Charles, eps_cl = iEps)
+    resultClustering_Charles <- dbscan::dbscan(db_charles,  eps = iEps, minPts = jMinpts)
     
     
     dsResultComplet[n,"TotalCluster_Charles"] <- max(resultClustering_Charles$cluster)
-    
+  
     dsResultComplet[n,"TotalOutliers_Charles"] <-
-      length(resultClustering_Charles$cluster[resultClustering_Charles$cluster == 0])
+    length(resultClustering_Charles$cluster[resultClustering_Charles$cluster == 0])
     
     jaccard_Charles <- 
       cluster_similarity(resultClustering_Charles$cluster, resultExpected, similarity = "jaccard", method = "independence")
@@ -96,12 +105,15 @@ for (iEps in rangeEpsilon) {
     
     dsResultComplet[n,"Rand_Charles"] <- rand_Charles
     
+    adjustedRand_Charles <- 
+      adjustedRandIndex(resultClustering_Charles$cluster, resultExpected)
+    
+    dsResultComplet[n,"AdjustedRand_Charles"] <- adjustedRand_Charles
+    
     # ===== 
     # Hanam
     
-    resultClustering_Hanam <- dbscan::optics(db_hanam,  eps = iEps, minPts = jMinpts)
-    
-    resultClustering_Hanam <- extractDBSCAN(resultClustering_Hanam, eps_cl = iEps)
+    resultClustering_Hanam <- dbscan::dbscan(db_hanam,  eps = iEps, minPts = jMinpts)
     
     dsResultComplet[n,"TotalCluster_Hanam"] <- max(resultClustering_Hanam$cluster)
     
@@ -118,6 +130,11 @@ for (iEps in rangeEpsilon) {
     
     dsResultComplet[n,"Rand_Hanam"] <- rand_Hanam
     
+    adjustedRand_Hanam <- 
+      adjustedRandIndex(resultClustering_Hanam$cluster, resultExpected)
+    
+    dsResultComplet[n,"AdjustedRand_Hanam"] <- adjustedRand_Hanam
+    
     dsResultComplet[n,"Has_Result_Diff"] <- !(jaccard_Charles == jaccard_Hanam && rand_Charles == rand_Hanam)
     
     n <- n + 1;
@@ -125,8 +142,6 @@ for (iEps in rangeEpsilon) {
   
 }
 
-#write.csv(x = dsResultComplet, file="evaluation/evaluation-optics-charles-VS-Hanam.csv")
-write.csv(x = dsResultComplet, file="evaluation/evaluation-31commits_outliers-optics-charles-VS-Hanam.csv")
-
+write.csv(x = dsResultComplet, file="evaluation/evaluation-dbscan-charles-VS-Hanam-validar-PosDefesa-dt51-v1.csv")
 
 

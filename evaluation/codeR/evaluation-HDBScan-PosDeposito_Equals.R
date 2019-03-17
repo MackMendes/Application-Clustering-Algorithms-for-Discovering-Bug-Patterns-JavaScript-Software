@@ -10,13 +10,8 @@ setwd("G:/Mestrado/Meus experimentos/BugAID-Modificado/evaluation/codeR")
 
 # ===========
 # Leitura de CSV (apenas com 31 comits)
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits_charles.csv", header=TRUE, sep=",")
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits+outliers_charles.csv", header=TRUE, sep=",")
-dataset.charles <- read.csv(file="datasets/dataset_bugid_with_header_charles_pos_deposito.csv", header=TRUE, sep=",")
-
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits_hanam.csv", header=TRUE, sep=",")
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits+outliers_hanam.csv", header=TRUE, sep=",")
-dataset.hanam <- read.csv(file="datasets/dataset_bugid_with_header_hanam_pos_deposito.csv", header=TRUE, sep=",")
+dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL_Equals.csv", header=TRUE, sep=",")
+dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL_Equals.csv", header=TRUE, sep=",")
 
 
 # ===========
@@ -36,6 +31,8 @@ library("clusteval")
 if(!require(dbscan)) install.packages("dbscan")
 library("dbscan")
 
+if(!require(mclust)) install.packages("mclust")
+library("mclust")
 
 # ===========
 # Evaluation 
@@ -51,6 +48,9 @@ jaccard_Hanam <- double()
 rand_Charles <- double()
 rand_Hanam <- double()
 
+adjustedRand_Charles <- double()
+adjustedRand_Hanam <- double()
+
 
 resultClustering_Charles <- list()
 resultClustering_Hanam <- list()
@@ -58,8 +58,7 @@ resultClustering_Hanam <- list()
 n <- 1
 
 # Resultados esperados 
-# resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6)
-resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6,0,0,0)
+resultExpected <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0)
 
 for (jMinpts in rangeMinPts) {
   
@@ -91,6 +90,11 @@ for (jMinpts in rangeMinPts) {
   
   dsResultComplet[n,"Rand_Charles"] <- rand_Charles
   
+  adjustedRand_Charles <- 
+    adjustedRandIndex(resultClustering_Charles$cluster, resultExpected)
+  
+  dsResultComplet[n,"AdjustedRand_Charles"] <- adjustedRand_Charles
+  
   # ===== 
   # Hanam
   
@@ -115,12 +119,15 @@ for (jMinpts in rangeMinPts) {
   
   dsResultComplet[n,"Rand_Hanam"] <- rand_Hanam
   
+  adjustedRand_Hanam <- 
+    adjustedRandIndex(resultClustering_Hanam$cluster, resultExpected)
+  
+  dsResultComplet[n,"AdjustedRand_Hanam"] <- adjustedRand_Hanam
+  
   dsResultComplet[n,"Has_Result_Diff"] <- !(jaccard_Charles == jaccard_Hanam && rand_Charles == rand_Hanam)
   
   n <- n + 1;
 }
 
-#write.csv(x = dsResultComplet, file="evaluation/evaluation-Hdbscan-charles-VS-Hanam.csv")
-
-write.csv(x = dsResultComplet, file="evaluation/evaluation-31commits_outliers-Hdbscan-charles-VS-Hanam.csv")
+write.csv(x = dsResultComplet, file="evaluation/evaluation-Hdbscan-charles-VS-Hanam-PosDeposito_v3.csv")
 

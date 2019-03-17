@@ -9,19 +9,14 @@ setwd("G:/Mestrado/Meus experimentos/BugAID-Modificado/evaluation/codeR")
 
 
 # ===========
-# Leitura de CSV (apenas com 31 comits)
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits_charles.csv", header=TRUE, sep=",")
+# Leitura de CSV
 
-# Resultados outliers
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits+outliers_charles.csv", header=TRUE, sep=",")
+#dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL.csv", header=TRUE, sep=",")
+#dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL.csv", header=TRUE, sep=",")
 
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits_hanam.csv", header=TRUE, sep=",")
+dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL_Equals.csv", header=TRUE, sep=",")
+dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL_Equals.csv", header=TRUE, sep=",")
 
-# Resultados outliers
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits+outliers_hanam.csv", header=TRUE, sep=",")
-
-dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL.csv", header=TRUE, sep=",")
-dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL.csv", header=TRUE, sep=",")
 
 # ===========
 # Retirando os metadados do DataSet (deixar somente os BCTs)
@@ -40,6 +35,9 @@ library("clusteval")
 if(!require(dbscan)) install.packages("dbscan")
 library("dbscan")
 
+if(!require(mclust)) install.packages("mclust")
+library("mclust")
+
 
 # ===========
 # Evaluation 
@@ -56,26 +54,28 @@ jaccard_Hanam <- double()
 rand_Charles <- double()
 rand_Hanam <- double()
 
+adjustedRand_Charles <- double()
+adjustedRand_Hanam <- double()
+
 
 resultClustering_Charles <- list()
 resultClustering_Hanam <- list()
 
 n <- 1
 
-# Resultados esperados 
-#resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6)
-
-# Resultados outliers
-#resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6,0,0,0)
-
 # ====
 # Pós Deposito
 #  c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0)
 # Resultados esperados - Charles
-resultExpected_Charles <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7) #c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,-,-,-,-)
+#resultExpected_Charles <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7) #c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,-,-,-,-)
+
+resultExpected_Charles <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0)
 
 # Resultados esperados - Hanam
-resultExpected_Hanam <- c(2,2,2,3,3,3,5,0,5,5,6,6,6,7,7,8,0,0,0) #c(-,-,-,2,2,2,3,3,3,-,-,-,5,0,5,5,6,6,6,7,7,8,0,0,0)
+#resultExpected_Hanam <- c(2,2,2,3,3,3,5,0,5,5,6,6,6,7,7,8,0,0,0) #c(-,-,-,2,2,2,3,3,3,-,-,-,5,0,5,5,6,6,6,7,7,8,0,0,0)
+
+resultExpected_Hanam <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0)
+
 # ====
 
 for (iEps in rangeEpsilon) {
@@ -109,6 +109,11 @@ for (iEps in rangeEpsilon) {
     
     dsResultComplet[n,"Rand_Charles"] <- rand_Charles
     
+    adjustedRand_Charles <- 
+      adjustedRandIndex(resultClustering_Charles$cluster, resultExpected_Charles)
+    
+    dsResultComplet[n,"AdjustedRand_Charles"] <- adjustedRand_Charles
+    
     # ===== 
     # Hanam
     
@@ -129,6 +134,11 @@ for (iEps in rangeEpsilon) {
     
     dsResultComplet[n,"Rand_Hanam"] <- rand_Hanam
     
+    adjustedRand_Hanam <- 
+      adjustedRandIndex(resultClustering_Hanam$cluster, resultExpected_Hanam)
+    
+    dsResultComplet[n,"AdjustedRand_Hanam"] <- adjustedRand_Hanam
+    
     dsResultComplet[n,"Has_Result_Diff"] <- !(jaccard_Charles == jaccard_Hanam && rand_Charles == rand_Hanam)
     
     n <- n + 1;
@@ -136,7 +146,7 @@ for (iEps in rangeEpsilon) {
   
 }
 
-write.csv(x = dsResultComplet, file="evaluation/evaluation-dbscan-charles-VS-Hanam-validar-PosDeposito.csv")
+write.csv(x = dsResultComplet, file="evaluation/evaluation-dbscan-charles-VS-Hanam-validar-PosDeposito_v3.csv")
 # Resultados outliers
 #write.csv(x = dsResultComplet, file="evaluation/evaluation-31commits_outliers-dbscan-charles-VS-Hanam.csv")
 

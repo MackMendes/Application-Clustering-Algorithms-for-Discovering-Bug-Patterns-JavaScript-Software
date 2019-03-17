@@ -10,11 +10,8 @@ setwd("G:/Mestrado/Meus experimentos/BugAID-Modificado/evaluation/codeR")
 
 # ===========
 # Leitura de CSV (apenas com 31 comits)
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits_charles.csv", header=TRUE, sep=",")
-dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits+outliers_charles.csv", header=TRUE, sep=",")
-
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits_hanam.csv", header=TRUE, sep=",")
-dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits+outliers_hanam.csv", header=TRUE, sep=",")
+dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL_Equals.csv", header=TRUE, sep=",")
+dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL_Equals.csv", header=TRUE, sep=",")
 
 
 # ===========
@@ -31,12 +28,14 @@ db_hanam <- dataset.hanam[11:ncol(dataset.hanam)]
 if(!require(clusteval)) install.packages("clusteval")
 library("clusteval")
 
+if(!require(mclust)) install.packages("mclust")
+library("mclust")
 
 # ===========
 # Evaluation 
 # ===========
 
-rangeCenters <- seq(2, as.integer(ncol(db_hanam)/2), by=1)
+rangeCenters <- seq(2, ncol(db_charles), by=1)
 
 dsResultComplet <- data.frame()
 
@@ -45,6 +44,9 @@ jaccard_Hanam <- double()
 
 rand_Charles <- double()
 rand_Hanam <- double()
+
+adjustedRand_Charles <- double()
+adjustedRand_Hanam <- double()
 
 
 resultClustering_Charles <- list()
@@ -55,8 +57,7 @@ nCountTest <- 10 # Quantidade de testes
 n <- 1
 
 # Resultados esperados 
-# resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6)
-resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6,0,0,0)
+resultExpected <- c(1,1,1,2,2,2,3,3,3,4,4,4,5,0,5,5,6,6,6,7,7,8,0,0,0)
 
 for (ncount in 1:nCountTest) {
 
@@ -95,43 +96,56 @@ for (ncount in 1:nCountTest) {
     
     dsResultComplet[n,"Rand_Charles"] <- rand_Charles
     
+    adjustedRand_Charles <- 
+      adjustedRandIndex(resultClustering_Charles$cluster, resultExpected)
+    
+    dsResultComplet[n,"AdjustedRand_Charles"] <- adjustedRand_Charles
+    
     # ===== 
     # Hanam
     
-    resultClustering_Hanam <- kmeans(x = db_hanam,  centers= iCenters)
+    if(ncol(db_hanam) >= iCenters)
+    {
     
-    dsResultComplet[n,"TotalCluster_Hanam"] <- max(resultClustering_Hanam$cluster)
-    
-    dsResultComplet[n,"TotalSumSquares_Hanam"] <- resultClustering_Hanam$totss
-    
-    dsResultComplet[n,"TotalwithinClusterSumSquares_Hanam"] <- resultClustering_Hanam$tot.withinss
-    
-    dsResultComplet[n,"TotalBetweenClusterSumSquares_Hanam"] <- resultClustering_Hanam$betweenss
-    
-    dsResultComplet[n,"Iterations_Hanam"] <- resultClustering_Hanam$iter
-    
-    dsResultComplet[n,"FaultInAlgorithm_Hanam"] <- resultClustering_Hanam$ifault
-    
-    jaccard_Hanam <-
-      cluster_similarity(resultClustering_Hanam$cluster, resultExpected, similarity = "jaccard", method = "independence")
-    
-    dsResultComplet[n,"Jaccard_Hanam"] <- jaccard_Hanam
-    
-    rand_Hanam <-
-      cluster_similarity(resultClustering_Hanam$cluster, resultExpected, similarity = "rand", method = "independence")
-    
-    dsResultComplet[n,"Rand_Hanam"] <- rand_Hanam
-    
-    dsResultComplet[n,"Has_Result_Diff"] <- !(jaccard_Charles == jaccard_Hanam && rand_Charles == rand_Hanam)
+      resultClustering_Hanam <- kmeans(x = db_hanam,  centers= iCenters)
+      
+      dsResultComplet[n,"TotalCluster_Hanam"] <- max(resultClustering_Hanam$cluster)
+      
+      dsResultComplet[n,"TotalSumSquares_Hanam"] <- resultClustering_Hanam$totss
+      
+      dsResultComplet[n,"TotalwithinClusterSumSquares_Hanam"] <- resultClustering_Hanam$tot.withinss
+      
+      dsResultComplet[n,"TotalBetweenClusterSumSquares_Hanam"] <- resultClustering_Hanam$betweenss
+      
+      dsResultComplet[n,"Iterations_Hanam"] <- resultClustering_Hanam$iter
+      
+      dsResultComplet[n,"FaultInAlgorithm_Hanam"] <- resultClustering_Hanam$ifault
+      
+      jaccard_Hanam <-
+        cluster_similarity(resultClustering_Hanam$cluster, resultExpected, similarity = "jaccard", method = "independence")
+      
+      dsResultComplet[n,"Jaccard_Hanam"] <- jaccard_Hanam
+      
+      rand_Hanam <-
+        cluster_similarity(resultClustering_Hanam$cluster, resultExpected, similarity = "rand", method = "independence")
+      
+      dsResultComplet[n,"Rand_Hanam"] <- rand_Hanam
+      
+      adjustedRand_Hanam <- 
+        adjustedRandIndex(resultClustering_Hanam$cluster, resultExpected)
+      
+      dsResultComplet[n,"AdjustedRand_Hanam"] <- adjustedRand_Hanam
+      
+      dsResultComplet[n,"Has_Result_Diff"] <- !(jaccard_Charles == jaccard_Hanam && rand_Charles == rand_Hanam)
+      
+    }
     
     n <- n + 1;
   
   }
 }
 
-#write.csv(x = dsResultComplet, file="evaluation/evaluation-kmeans-charles-VS-Hanam.csv")
-
-write.csv(x = dsResultComplet, file="evaluation/evaluation-31commits_outliers-kmeans-charles-VS-Hanam.csv")
+write.csv(x = dsResultComplet, file="evaluation/evaluation-kmeans-charles-VS-Hanam-PosDeposito_v3.csv")
 
 
 

@@ -9,16 +9,7 @@ setwd("G:/Mestrado/Meus experimentos/BugAID-Modificado/evaluation/codeR")
 
 
 # ===========
-# Leitura de CSV (apenas com 31 comits)
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits_charles.csv", header=TRUE, sep=",")
-
-# Resultados outliers
-#dataset.charles <- read.csv(file="datasets/dataset_bugid_31commits+outliers_charles.csv", header=TRUE, sep=",")
-
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits_hanam.csv", header=TRUE, sep=",")
-
-# Resultados outliers
-#dataset.hanam <- read.csv(file="datasets/dataset_bugid_31commits+outliers_hanam.csv", header=TRUE, sep=",")
+# Leitura de CSV
 
 dataset.charles <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Charles_FINAL.csv", header=TRUE, sep=",")
 dataset.hanam <- read.csv(file="datasets/posdeposito/dataset_bugid_with_header_Hanam_FINAL.csv", header=TRUE, sep=",")
@@ -61,12 +52,6 @@ resultClustering_Charles <- list()
 resultClustering_Hanam <- list()
 
 n <- 1
-
-# Resultados esperados 
-#resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6)
-
-# Resultados outliers
-#resultExpected <- c(5,5,5,5,5,6,8,6,6,6,6,6,6,8,6,6,6,7,7,7,6,7,8,6,6,6,0,0,0)
 
 # ====
 # Pós Deposito
@@ -136,7 +121,7 @@ for (iEps in rangeEpsilon) {
   
 }
 
-write.csv(x = dsResultComplet, file="evaluation/evaluation-dbscan-charles-VS-Hanam-validar-PosDeposito.csv")
+write.csv(x = dsResultComplet, file="evaluation/evaluation-dbscan-charles-VS-Hanam-validar-PosDeposito_v1.csv")
 # Resultados outliers
 #write.csv(x = dsResultComplet, file="evaluation/evaluation-31commits_outliers-dbscan-charles-VS-Hanam.csv")
 
