@@ -1,4 +1,4 @@
-# Experimentos modificados - Mestrado USP
+# Aplicação de algoritmos de agrupamento para descoberta de padrões de defeito em software JavaScript - Mestrado USP
 
 Neste repositório, têm algumas modificações que foram realizadas durante o desenvolvimento da minha [Dissertação de mestrado na USP](https://goo.gl/1sENyu). 
 
@@ -8,8 +8,7 @@ As aplicações desenvolvidas com a linguagem JavaScript, vêm aumentando a cada
 
 
 ---------
-
-# Modified Experiments - Masters USP
+# Application of Clustering Algorithms for Discovering Bug Patterns in JavaScript Software - Masters USP
 
 In this repository, there are some modifications that were made during the development of my [Master's Dissertation at USP](https://goo.gl/1sENyu).   
 
